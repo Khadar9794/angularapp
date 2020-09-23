@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../model/customer';
+import { CustomerService } from '../service/customerservice';
 
 @Component({
   selector: 'customer-list',
@@ -8,11 +9,14 @@ import { Customer } from '../model/customer';
 })
 export class CustomerListComponent {
 
-  constructor() { }
+  customerService:CustomerService;
 
-  customers:Customer[]=[
-    new Customer("basha",2000),
-    new Customer("harsha",3000),
-    new Customer("tharun",4000)
-  ];
+
+  customers:Customer[]
+  
+    constructor(customerService:CustomerService) {
+      this.customerService=customerService;
+      this.customers=customerService.allCustomers();
+     }
+
 }

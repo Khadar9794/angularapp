@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../model/customer';
+import { CustomerService } from '../service/customerservice';
 
 @Component({
   selector: 'add-customer',
@@ -8,16 +9,20 @@ import { Customer } from '../model/customer';
 })
 export class AddCustomerComponent {
 
-  constructor() { }
+  customerService:CustomerService;
 
-  customer:Customer=undefined;
+  constructor(customerService:CustomerService){
+    this.customerService=customerService;
+  }
+  customer:Customer;
 
   addCustomer(form:any){
    let data=form.value;
    let name=data.customername;
    let balance=data.balance;
-   this.customer=new Customer(name,balance);
+   this.customer=new Customer(20,name,balance);
    console.log("customer initialized="+this.customer.balance);
+   this.customerService.addCustomer(this.customer);
   }
 
 }

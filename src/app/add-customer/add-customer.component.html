@@ -20,5 +20,12 @@
 <br>
 
 <div *ngIf="customer!=undefined">
+    <h2>Add customer</h2>
+    {{customer.id}}
+    {{customer.name}}
+    {{customer.balance}}
+    </div>
+
+<div *ngIf="customer!=undefined">
 Submitted data is {{customer.name}} {{customer.balance}}
 </div>
