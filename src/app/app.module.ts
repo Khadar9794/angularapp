@@ -7,6 +7,7 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
 import { LengthPipe } from './pipes/length';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CustomerService } from './service/customerservice';
 
 @NgModule({
@@ -21,9 +22,10 @@ import { CustomerService } from './service/customerservice';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule
   ],
-  providers: [CustomerService],
+  providers: [CustomerService,HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

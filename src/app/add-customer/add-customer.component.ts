@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../model/customer';
+import { Observable } from 'rxjs';
 import { CustomerService } from '../service/customerservice';
 
 @Component({
@@ -20,9 +21,11 @@ export class AddCustomerComponent {
    let data=form.value;
    let name=data.customername;
    let balance=data.balance;
-   this.customer=new Customer(20,name,balance);
-   console.log("customer initialized="+this.customer.balance);
-   this.customerService.addCustomer(this.customer);
+   this.customer=new Customer(1,name,balance);
+   let observable:Observable<Customer>=this.customerService.addCustomer(this.customer);
+   observable.subscribe(
+     customerArg=>{this.customer=customerArg},
+   );
   }
 
 }
